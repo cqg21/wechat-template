@@ -1,5 +1,5 @@
 {
-    "name": "limily/wechat-template",
+    "name": "cqg21/wechat-template",
     "description": "微信小程序模板消息",
     "keywords": ["wechat-template", "minapp"],
     "type": "library",
@@ -7,8 +7,8 @@
     },
     "authors": [
         {
-            "name": "Limily",
-            "email": "237446547@qq.com"
+            "name": "cqg21",
+            "email": "5108261@qq.com"
         }
     ],
     "require": {
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "limily\\wechat\\template\\": "src/"
+            "cqg21\\wechat\\template\\": "src/"
         }
     },
     "license": "MIT"
