@@ -1,9 +1,9 @@
 <?php
 
-namespace limily\wechat\template;
+namespace cqg21\wechat\template;
 
 
-use limily\wechat\template\tools\Tools;
+use cqg21\wechat\template\tools\Tools;
 
 class TemplateMessage extends Message
 {
