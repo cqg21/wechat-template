@@ -1,5 +1,5 @@
 <?php
-namespace cqg21\wechat\template\tools;
+namespace Cqg21\Wechat\Template\tools;
 
 class Tools
 {

@@ -1,9 +1,8 @@
 <?php
+namespace Cqg21\Wechat\Template;
 
-namespace cqg21\wechat\template;
-
-
-use cqg21\wechat\template\tools\Tools;
+use Cqg21\Wechat\Template\tools\Tools;
+use Cqg21\Wechat\Template\Message;
 
 class TemplateMessage extends Message
 {

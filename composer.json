@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "cqg21\\wechat\\template\\": "src/"
+            "Cqg21\\Wechat\\Template\\": "src/"
         }
     },
     "license": "MIT"
