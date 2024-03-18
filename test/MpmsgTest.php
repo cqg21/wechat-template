@@ -58,7 +58,8 @@ class MpmsgTest extends TestCase
         $tpl->setTemplateId('Om7rmkKAMG2VhKFPc1hQ_PFYk3tjgtiFuZJdW3GIQ5M');
         $tpl->setTmpData($data);
         $tpl->setMiniprogramData($mini);
-        var_dump($tpl->send($mp_openid, ''));
+        $res = $tpl->send($mp_openid, '');
+        $this->assertEquals($res['message'], "SUCCESS");
     }
 }
 

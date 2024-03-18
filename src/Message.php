@@ -1,4 +1,5 @@
 <?php
+
 namespace Cqg21\Wechat\Template;
 
 use Cqg21\Wechat\Template\interfaces\WechatInterface;
@@ -48,8 +49,8 @@ abstract class Message implements WechatInterface
     {
         $this->config   = $config;
         $this->appId    = $config['app_id'] ?? null;
-        $this->appSecret= $config['app_secret'] ?? null;
-        $this->access_token = $config['access_token']?? null;
+        $this->appSecret = $config['app_secret'] ?? null;
+        $this->access_token = $config['access_token'] ?? null;
     }
 
     public function setAccessToken($token)
@@ -66,24 +67,26 @@ abstract class Message implements WechatInterface
         return $newdata;
     }
 
-    public function setMiniprogramData($data){
+    public function setMiniprogramData($data)
+    {
         $this->miniporgram_data =  $data;
     }
 
-    public function setTmpData($data=null){
+    public function setTmpData($data = null)
+    {
         $newdata = $this->composedata($data);
         $this->template_data = $newdata;
     }
 
     public function setData($data = null)
     {
-        if($data) {
+        if ($data) {
             $key = 1;
-            foreach($data as $value) {
-                $this->template_data['keyword'.$key] = [
+            foreach ($data as $value) {
+                $this->template_data['keyword' . $key] = [
                     'value' => $value
                 ];
-                $key ++;
+                $key++;
             }
         }
     }
@@ -106,10 +109,9 @@ abstract class Message implements WechatInterface
     public function getAccessToken()
     {
         // TODO: Implement getAccessToken() method.
-        if($this->access_token) {
+        if ($this->access_token) {
             return $this->access_token;
         }
-        var_dump("=====================getAccessToken");
         return $this->getAccessTokenFromWechat();
     }
 
@@ -120,11 +122,10 @@ abstract class Message implements WechatInterface
             'appid'         => $this->appId,
             'secret'        => $this->appSecret
         ];
-        $result = Tools::request_get(self::ACCESS_TOKEN,$params);
-        if(!$result || $result['errcode'] != 0) {
-            throw new \Exception('获取调用凭据（access_token）失败【'.$result['errcode'].'】：'.$result['errmsg']);
+        $result = Tools::request_get(self::ACCESS_TOKEN, $params);
+        if (!$result || (isset($result['errcode']) && $result['errcode'] != 0)) {
+            throw new \Exception('获取调用凭据（access_token）失败【' . $result['errcode'] . '】：' . $result['errmsg']);
         }
         return $result['access_token'];
     }
-
 }

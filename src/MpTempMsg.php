@@ -31,7 +31,6 @@ class MpTempMsg extends Message
             $header[] = 'Content-Type:application/json;charset=utf-8';
             $result = Tools::request_post(parent::MP_TEMPLATE_MESSAGE_SEND . '?access_token=' . $access_token, json_encode($params), $header);
             // $result = Tools::request_post(parent::MP_TEMPLATE_MESSAGE_SEND . '?access_token=' . $access_token, array_filter($params), $header);
-            print_r($result);
             if (!$result || $result['errcode'] != 0) {
                 throw new \Exception($result['errmsg']);
             }
