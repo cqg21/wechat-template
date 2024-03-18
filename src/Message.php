@@ -27,6 +27,9 @@ abstract class Message implements WechatInterface
      */
     protected $template_data  = null;
 
+
+    protected $miniporgram_data = null;
+
     /**
      * 模板需要放大的关键词
      * @var null
@@ -39,18 +42,37 @@ abstract class Message implements WechatInterface
      */
     protected $page  = '';
 
-    protected $access_token = null;
+    protected $access_token = "";
 
     public function __construct($config = [])
     {
         $this->config   = $config;
         $this->appId    = $config['app_id'] ?? null;
         $this->appSecret= $config['app_secret'] ?? null;
+        $this->access_token = $config['access_token']?? null;
     }
 
     public function setAccessToken($token)
     {
         $this->access_token = $token;
+    }
+
+    private function composedata($data)
+    {
+        $newdata = array();
+        foreach ($data as $key => $value) {
+            $newdata[$key] = array("value" => $value);
+        }
+        return $newdata;
+    }
+
+    public function setMiniprogramData($data){
+        $this->miniporgram_data =  $data;
+    }
+
+    public function setTmpData($data=null){
+        $newdata = $this->composedata($data);
+        $this->template_data = $newdata;
     }
 
     public function setData($data = null)
@@ -87,6 +109,7 @@ abstract class Message implements WechatInterface
         if($this->access_token) {
             return $this->access_token;
         }
+        var_dump("=====================getAccessToken");
         return $this->getAccessTokenFromWechat();
     }
 
